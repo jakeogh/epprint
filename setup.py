@@ -10,7 +10,9 @@ import fastentrypoints
 if not sys.version_info[0] == 3:
     sys.exit("Python 3 is required. Use: 'python3 setup.py install'")
 
-dependencies = []
+dependencies = [
+    "eprint @ git+https://git@github.com/jakeogh/eprint",
+]
 
 config = {
     "version": "0.1",
