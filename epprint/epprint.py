@@ -16,9 +16,9 @@ from eprint import eprint
 
 def epprint(*args, **kwargs) -> None:
     """prepend stack metadata to eprint()"""
-    # pylint: disable=W0212  # access to protected member
+    # _pylint: disable=protected-access # W0212 # access to protected member
     caller = sys._getframe(1).f_code.co_name
-    # pylint: enable=W0212
+    # _pylint: enable=protected-access
     stack = inspect.stack()
     frm = stack[1]
     depth = len(stack)
