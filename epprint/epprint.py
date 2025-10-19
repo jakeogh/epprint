@@ -15,25 +15,22 @@ from eprint import eprint
 
 
 def epprint(*args, **kwargs) -> None:
-    """prepend stack metadata to eprint()"""
-    # _pylint: disable=protected-access # W0212 # access to protected member
-    caller = sys._getframe(1).f_code.co_name
-    # _pylint: enable=protected-access
+    """Prepend stack metadata to eprint()"""
+    caller = sys._getframe(1).f_code.co_name  # pylint: disable=protected-access
     stack = inspect.stack()
     frm = stack[1]
     depth = len(stack)
-    mod = str(inspect.getmodule(frm[0]))
-    try:
-        source_file = mod.split()[-1].split(">")[0].split("'")[1].split("/")[-1]
-    except IndexError:
-        source_file = "(none)"
+
+    # More robust file extraction
+    source_file = os.path.basename(frm.filename) if frm.filename else "(none)"
+
     head = " ".join(
         [
             str(depth).zfill(4),
             f"{time.time():.5f}",
             str(os.getpid()),
             source_file,
-            caller + "()",
+            f"{caller}()",
         ]
     )
-    eprint(f"{head}", *args, **kwargs)
+    eprint(head, *args, **kwargs)
