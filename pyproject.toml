@@ -6,14 +6,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "epprint"
-version = "0.0.1760909794"
+version = "0.0.1761010916"
 description = "print() alias that writes to sys.stderr prepended by stack metadata"
 authors = [
     { name = "Justin Keogh", email = "github.com@v6y.net" },
 ]
 dependencies = [
-    "eprint @ git+https://git@github.com/jakeogh/eprint",
+    "eprint>=0.0.1760909962 @ git+https://git@github.com/jakeogh/eprint",
 ]
+    #"eprint @ git+https://git@github.com/jakeogh/eprint",
 license = "ISC"
 requires-python = ">=3.11"
 
