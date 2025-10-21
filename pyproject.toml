@@ -1,22 +1,21 @@
 [build-system]
-requires = [
-    "setuptools>=61.0",
-]
-build-backend = "setuptools.build_meta"
+requires = ["setuptools>=61.0"]
+build-backend = "pep508_url_version_backend"
+backend-path = ["."]
 
 [project]
 name = "epprint"
-version = "0.0.1761012815"
+version = "0.0.1761014750"
 description = "print() alias that writes to sys.stderr prepended by stack metadata"
 authors = [
     { name = "Justin Keogh", email = "github.com@v6y.net" },
 ]
-dependencies = [
-    "eprint @ git+https://git@github.com/jakeogh/eprint",
-]
-    #"eprint>=0.0.1760909962 @ git+https://git@github.com/jakeogh/eprint",
-license = "ISC"
+# Leave dependencies empty - the backend fills this dynamically
+dependencies = []
 requires-python = ">=3.11"
+
+[project.license]
+text = "ISC"
 
 [project.urls]
 Homepage = "https://github.com/jakeogh/epprint"
@@ -28,4 +27,26 @@ zip-safe = false
 [tool.setuptools.package-data]
 epprint = [
     "py.typed",
+]
+
+# Configuration for our custom backend
+[tool.pep508-url-version-backend]
+# Fast path - used when custom index is configured
+# Hook should update these version numbers when dependencies change
+dependencies-indexed = [
+    "eprint>=0.0.1760909962",
+]
+
+# Slow fallback - used when custom index is NOT configured
+# Hook should keep these URLs up to date
+dependencies-git = [
+    "eprint @ git+https://git@github.com/jakeogh/eprint",
+]
+
+# Optional: Custom markers to detect if index is configured
+# If any of these strings appear in PIP_INDEX_URL or PIP_EXTRA_INDEX_URL,
+# we'll use the fast path
+index-urls = [
+    "jakeogh.github.io",
+    "myapps-index",
 ]
