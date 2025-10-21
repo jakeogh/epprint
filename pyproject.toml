@@ -1,11 +1,11 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=61.0", "tomlkit"]
 build-backend = "pep508_url_version_backend"
 backend-path = ["."]
 
 [project]
 name = "epprint"
-version = "0.0.1761014750"
+version = "0.0.1761017901"
 description = "print() alias that writes to sys.stderr prepended by stack metadata"
 authors = [
     { name = "Justin Keogh", email = "github.com@v6y.net" },
