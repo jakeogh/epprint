@@ -80,7 +80,7 @@ def _has_custom_index():
         "index-urls",
         [
             "jakeogh.github.io",
-            "myapps-index",
+            "pip-index",
         ],
     )
 
@@ -119,6 +119,7 @@ def _get_dependencies():
     config = _load_config()
 
     if _has_custom_index():
+        print("custom index detected, using fast-path")
         # Fast path - use version constraints
         deps = config.get("dependencies-indexed", [])
         print(
