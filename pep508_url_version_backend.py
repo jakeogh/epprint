@@ -311,6 +311,7 @@ def build_editable(
     config_settings=None,
     metadata_directory=None,
 ):
+    print("build_editable()", wheel_directory, file=sys.stderr)
     """PEP 660 hook: Build an editable wheel."""
     if hasattr(_orig_backend, "build_editable"):
         return _orig_backend.build_editable(

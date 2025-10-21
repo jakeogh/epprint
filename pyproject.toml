@@ -5,7 +5,7 @@ backend-path = ["."]
 
 [project]
 name = "epprint"
-version = "0.0.1761024668"
+version = "0.0.1761024887"
 description = "print() alias that writes to sys.stderr prepended by stack metadata"
 authors = [
     { name = "Justin Keogh", email = "github.com@v6y.net" },
