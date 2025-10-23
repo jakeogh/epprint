@@ -5,7 +5,7 @@ backend-path = ["."]
 
 [project]
 name = "epprint"
-version = "0.0.1761024887"
+version = "1!0.0.1761259474"
 description = "print() alias that writes to sys.stderr prepended by stack metadata"
 authors = [
     { name = "Justin Keogh", email = "github.com@v6y.net" },
@@ -33,9 +33,7 @@ epprint = [
 [tool.pep508-url-version-backend]
 # Fast path - used when custom index is configured
 # Hook should update these version numbers when dependencies change
-dependencies-indexed = [
-    "eprint>=0.0.1760909962",
-]
+dependencies-indexed = ["eprint>=1!0.0.1761259337"]
 
 # Slow fallback - used when custom index is NOT configured
 # Hook should keep these URLs up to date
@@ -48,5 +46,5 @@ dependencies-git = [
 # we'll use the fast path
 index-urls = [
     "jakeogh.github.io",
-    "myapps-index",
+    "pip-index",
 ]
